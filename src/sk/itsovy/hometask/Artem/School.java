@@ -6,6 +6,7 @@
 package sk.itsovy.hometask.Artem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class School implements SchoolStat {
@@ -38,12 +39,12 @@ public class School implements SchoolStat {
     // Implemented interface
     @Override
     public Student getTheBestStudent() {
-        Student student = (Student) s1;
+        Student student = (Student) s1; /* Can't be cast to it! Fix! */
         for (int i = 0; i < s1.size(); i++){
-            if (getAverageGrade() <= 5)
+            if (getAverageGrade() >= 5)
                 return student;
         }
-        //return null;
+        return null;
     }
 
     @Override
@@ -70,26 +71,47 @@ public class School implements SchoolStat {
 
     @Override
     public double getAverageGradeFromMath() {
-        return 0;
+        double avgNum = 0;
+        Student student = (Student) s1;
+        for (int i = 0; i < s1.size(); i++){
+            avgNum = student.getG_Mat() + avgNum;
+        }
+
+        return avgNum / count;
     }
 
     @Override
     public Student getTheWorstStudent() {
+        Student student = (Student) s1;
+        for (int i = 0; i < s1.size(); i++){
+            if (getAverageGrade() <= 1)
+                return student;
+        }
+
         return null;
     }
 
     @Override
     public int getLowestAbsence() {
-        return 0;
+        Student student = (Student) s1;
+        int midAbs = 100;
+        for (int i = 0; i < s1.size(); i++){
+            if (student.getAbsence() < midAbs)
+                midAbs = student.getAbsence();
+        }
+        return midAbs;
     }
 
     @Override
     public List getListSortedByLastNameAsc() {
+        s1.sort(Comparator.comparing(Student::getFirstName));
+        s1.sort(Comparator.comparing(Student::getFirstName));
         return null;
     }
 
     @Override
     public List getListSortedByAbsenceDesc() {
+        s1.sort(Comparator.comparing(Student::getAbsence));
         return null;
     }
 }
