@@ -19,7 +19,7 @@ public class Main {
         // Create an object type School
         School topGrade = new School();
         try {
-            File myFile = new File("students.dat");
+            File myFile = new File("src\\sk\\itsovy\\hometask\\Artem\\students.dat");
             Scanner in = new Scanner(myFile);  // it started to read from the begging - \n - symbol of the field end
             while (in.hasNextLine()) {
                 String data = in.nextLine(); // save to the data all of the line and then go further
