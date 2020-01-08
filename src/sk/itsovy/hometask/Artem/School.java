@@ -94,7 +94,6 @@ public class School implements SchoolStat {
         for (Student student : s1) { //using the enhanced for loop to iterate through all elements in the list
             avgNum = student.getAverageGrade() + avgNum;
         }
-
         return (int) avgNum / getCount(); //any primitive conversion??? Wake up!!!
     }
 

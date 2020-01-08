@@ -28,7 +28,7 @@ public class Student extends Person {
     }
 
     // Getters
-    public byte getAverageGrade() {
+    protected byte getAverageGrade() {
         return (byte) ((g_Mat + g_Eng + g_Inf) / 3);
     }
 
